@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuessWhat - Clone de Skribbl.io</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">GuessWhat</h1>
+        
+        <!-- Section création ou rejoindre un salon -->
+        <div id="controls" class="my-3">
+            <input type="text" id="username" class="form-control mb-2" placeholder="Votre pseudo">
+            <div class="d-flex justify-content-between">
+                <button class="btn btn-primary" onclick="createRoom()">Créer un salon</button>
+                <input type="text" id="roomId" class="form-control mx-2" placeholder="ID du salon">
+                <button class="btn btn-success" onclick="joinRoom()">Rejoindre un salon</button>
+            </div>
+        </div>
+
+        <!-- Section outils de dessin -->
+        <div id="drawing-tools" class="my-4 d-none">
+            <label for="colorPicker">Couleur : </label>
+            <input type="color" id="colorPicker" value="#000000">
+
+            <label for="brushSize">Taille du pinceau : </label>
+            <input type="range" id="brushSize" min="1" max="10" value="5">
+
+            <button class="btn btn-warning" onclick="activateEraser()">Gomme</button>
+            <button class="btn btn-info" onclick="activateBrush()">Pinceau</button>
+        </div>
+
+        <!-- Section affichage du jeu (canvas + chat) -->
+        <div id="game" class="my-4 d-none">
+            <div class="row">
+                <div class="col-md-8">
+                    <canvas id="canvas" width="500" height="500" class="border"></canvas>
+                </div>
+                <div class="col-md-4">
+                    <h5>Code du salon : <span id="roomCode" class="badge bg-secondary"></span></h5>
+                    <h5>Joueurs dans le salon :</h5>
+                    <ul id="playerList" class="list-group"></ul>
+                </div>
+            </div>
+            <div class="my-3">
+                <input type="text" id="chatInput" class="form-control" placeholder="Entrez votre message">
+                <button class="btn btn-info mt-2" onclick="sendMessage()">Envoyer</button>
+            </div>
+            <textarea id="chatBox" rows="10" class="form-control" readonly></textarea>
+            <button class="btn btn-danger mt-3 d-none" id="startButton" onclick="startGame()">Démarrer la partie</button>
+        </div>
+    </div>
+
+    <!-- Modale pour afficher le mot à dessiner -->
+    <div class="modal fade" id="wordModal" tabindex="-1" aria-labelledby="wordModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="wordModalLabel">Mot à dessiner</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p id="wordToDraw" class="fs-4 text-center"></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Commencer à dessiner</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+    

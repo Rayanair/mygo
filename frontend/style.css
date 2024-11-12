@@ -1,0 +1,35 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.game-container {
+    display: inline-block;
+    margin: 0 auto;
+}
+
+canvas {
+    border: 1px solid #000;
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+textarea {
+    width: 500px;
+    margin-top: 10px;
+}
+
+input {
+    width: 300px;
+    padding: 5px;
+}
+
+button {
+    padding: 5px 10px;
+    margin-left: 10px;
+}
